@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arraji <arraji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 20:17:39 by arraji            #+#    #+#             */
-/*   Updated: 2019/11/18 04:38:28 by arraji           ###   ########.fr       */
+/*   Created: 2019/12/10 12:03:59 by arraji            #+#    #+#             */
+/*   Updated: 2019/12/10 12:24:32 by arraji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 size_t			ft_strlen(char const *str, int type)
 {
@@ -61,7 +61,7 @@ int				is_line(char *str, int rd)
 	return (0);
 }
 
-int				ft_strjoin(char **s1, char *s2, size_t len)
+int				ft_strjoin(char **s1, char *s2)
 {
 	size_t	index;
 	size_t	jndex;
@@ -83,7 +83,7 @@ int				ft_strjoin(char **s1, char *s2, size_t len)
 	while (jndex < s1_len)
 		(*s1)[index++] = copy[jndex++];
 	jndex = 0;
-	while (jndex < s2_len && jndex < len)
+	while (jndex < s2_len)
 		(*s1)[index++] = s2[jndex++];
 	(*s1)[index] = '\0';
 	return (end(&copy, NULL, 1));
@@ -115,5 +115,5 @@ int				cutter(char **save, char **line)
 	while (copy[index] != '\0')
 		(*save)[jndex++] = copy[index++];
 	(*save)[jndex] = '\0';
-	return (end(&copy, NULL, 1));
+	return (is_line(copy, 1) ? end(&copy, NULL, 1) : end(&copy, NULL, 0));
 }
