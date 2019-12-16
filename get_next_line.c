@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arraji <arraji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arraji <arraji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 12:22:34 by arraji            #+#    #+#             */
-/*   Updated: 2019/12/10 12:24:03 by arraji           ###   ########.fr       */
+/*   Updated: 2019/12/15 00:43:01 by arraji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			get_next_line(int fd, char **line)
 
 	if (!(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (end(&save, NULL, -1));
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
+	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 || (read(fd, buff, 0) == -1))
 		return (end(&buff, &save, -1));
 	rd = 1;
 	while (!is_line(save, rd))
